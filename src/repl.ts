@@ -9,13 +9,13 @@ export function cleanInput(input: string): string[] {
   return input.toLowerCase().trim().split(" ").filter((word) => word !== "");
 }
 
-export function startREPL () {
+export async function startREPL () {
   const state = initState();
   const rl = state.readline;
   const commands = state.commands;
 
   rl.prompt()
-  rl.on("line", (input: string) => {
+  rl.on("line", async (input: string) => {
   const words = cleanInput(input);
   if (words.length === 0) {
     rl.prompt();
@@ -30,7 +30,7 @@ export function startREPL () {
     return;
   } 
   try {
-    cmd.callback(state);
+    await cmd.callback(state);
   } catch (err) {
     console.log(err);
   }
