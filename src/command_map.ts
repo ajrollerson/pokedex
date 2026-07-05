@@ -1,4 +1,4 @@
-import type { State } from "./state";
+import type { State } from "./state.js";
 
 export async function commandMap(state: State) {
     const { next, previous, results } = await state.pokeapi.fetchLocations(state.nextLocationsURL ?? undefined);
