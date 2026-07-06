@@ -26,20 +26,45 @@ export class PokeAPI {
     }
   }
 
+  async fetchLocation(locationName: string): Promise<Location> {
+    const url = `${PokeAPI.baseURL}/location-area/${locationName}`;
+
+    const cacheResult = this.cache.get(url)
+    if (cacheResult) {
+      return cacheResult as Location
+    } else {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`);
+    }
+
+    const result = await response.json() as Location;
+    this.cache.add(url, result)
+    return result
+    }
+
+
+  }
+
 }
 
 export type Place = {
     name: string,
     url: string
-}
+};
 
 export type ShallowLocations = {
   count: number,
   next: string | null,
-  previous: string | null
+  previous: string | null,
   results: Array<Place>
 };
 
-export type Location = {
+type Location = {
   name: string
+  pokemon_encounters: {
+    pokemon: {
+      name: string
+    }
+  }[]
 };

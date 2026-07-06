@@ -22,6 +22,7 @@ export async function startREPL () {
     return;
   }
   const order = words[0];
+  const args = words.slice(1);
   const cmd = commands[order];
  
   if (cmd === undefined) {
@@ -30,7 +31,7 @@ export async function startREPL () {
     return;
   } 
   try {
-    await cmd.callback(state);
+    await cmd.callback(state, ...args);
   } catch (err) {
     console.log(err);
   }
