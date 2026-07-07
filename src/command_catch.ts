@@ -13,6 +13,7 @@ export async function commandCatch(state: State, ...args: string[]) {
     if ((base_experience * Math.random()) < 30) {
         state.pokedex[pokemonName] = pokemon;
         console.log(`${pokemon.name} was caught!`);
+        console.log("you may now inspect it with the inspect command.")
     } else {
         console.log(`${pokemon.name} escaped!`);
     }
