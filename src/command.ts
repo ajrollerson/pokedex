@@ -3,8 +3,10 @@ import { commandExit } from "./command_exit.js";
 import { commandExplore } from "./command_explore.js";
 import { commandHelp } from "./command_help.js";
 import { commandInspect } from "./command_inspect.js";
+import { commandLoad } from "./command_load.js";
 import { commandMap, commandMapb } from "./command_map.js";
 import { commandPokedex } from "./command_pokedex.js";
+import { commandSave } from "./command_save.js";
 import { commandWhere } from "./command_where.js";
 
 import { type CLICommand } from "./state.js";
@@ -20,6 +22,16 @@ export function getCommands(): Record<string, CLICommand> {
       name: "help",
       description: "Displays a help message",
       callback: commandHelp,
+    },
+    save: {
+      name: "save",
+      description: "Save the game with 'save <filename>",
+      callback: commandSave,
+    },
+    load: {
+      name: "load",
+      description: "Load a save file with 'load <filename>",
+      callback: commandLoad,
     },
     where: {
       name: "where",
