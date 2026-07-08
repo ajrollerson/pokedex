@@ -5,7 +5,7 @@ export async function commandInspect(state: State, ...args: string[]) {
     if (!pokemonName) {
         console.log("Pokemon does not exist!");
     } else if (!state.pokedex[pokemonName]) {
-        console.log("you have not caught that pokemon");
+        console.log("You have not caught that pokemon");
         return;
 
     } else {

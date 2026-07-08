@@ -5,6 +5,7 @@ import { commandHelp } from "./command_help.js";
 import { commandInspect } from "./command_inspect.js";
 import { commandMap, commandMapb } from "./command_map.js";
 import { commandPokedex } from "./command_pokedex.js";
+import { commandWhere } from "./command_where.js";
 
 import { type CLICommand } from "./state.js";
 
@@ -19,6 +20,11 @@ export function getCommands(): Record<string, CLICommand> {
       name: "help",
       description: "Displays a help message",
       callback: commandHelp,
+    },
+    where: {
+      name: "where",
+      description: "Displays the current location",
+      callback: commandWhere,
     },
     map: {
       name: "map",
