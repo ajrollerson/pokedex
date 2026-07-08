@@ -6,7 +6,7 @@ export async function commandExplore(state: State, ...args: string[]) {
         throw new Error("Area does not exist!")
     }
 
-    const location = await state.pokeapi.fetchLocation(areaName)
+    const location = await state.pokeapi.fetchLocation(state, areaName)
 
     console.log(`Exploring ${areaName}...`)
     console.log("Found Pokemon:")

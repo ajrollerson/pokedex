@@ -1,4 +1,5 @@
 import { Cache } from "./pokecache.js";
+import { State } from "./state.js";
 
 export class PokeAPI {
   private static readonly baseURL = "https://pokeapi.co/api/v2";
@@ -26,7 +27,7 @@ export class PokeAPI {
     }
   }
 
-  async fetchLocation(locationName: string): Promise<Location> {
+  async fetchLocation(state: State, locationName: string): Promise<Location> {
     const url = `${PokeAPI.baseURL}/location-area/${locationName}`;
 
     const cacheResult = this.cache.get(url)
@@ -39,7 +40,8 @@ export class PokeAPI {
     }
 
     const result = await response.json() as Location;
-    this.cache.add(url, result)
+    this.cache.add(url, result);
+    state.currentLocation = locationName;
     return result
     }
   }

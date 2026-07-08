@@ -6,6 +6,7 @@ export type State = {
     readline: Interface,
     commands: Record<string, CLICommand>,
     pokeapi: PokeAPI,
+    currentLocation: string | null,
     nextLocationsURL: string | null,
     prevLocationsURL: string | null
     pokedex: Record<string, Pokemon>
@@ -30,6 +31,7 @@ export function initState () {
     readline: rl,
     commands: commands,
     pokeapi: new PokeAPI(30000),
+    currentLocation: null,
     nextLocationsURL: null,
     prevLocationsURL: null,
     pokedex: {}

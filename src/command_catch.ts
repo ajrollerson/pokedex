@@ -8,13 +8,22 @@ export async function commandCatch(state: State, ...args: string[]) {
 
     const pokemon = await state.pokeapi.fetchPokemon(pokemonName);
     const base_experience = pokemon.base_experience;
+    const location = await state.pokeapi.fetchLocation(state, state.currentLocation as string)
 
-    console.log(`Throwing a Pokeball at ${pokemon.name}...`)
-    if ((base_experience * Math.random()) < 30) {
-        state.pokedex[pokemonName] = pokemon;
-        console.log(`${pokemon.name} was caught!`);
-        console.log("you may now inspect it with the inspect command.")
-    } else {
-        console.log(`${pokemon.name} escaped!`);
+
+    for (const areaPokemon of location.pokemon_encounters) {
+        if (areaPokemon.pokemon.name.includes(pokemonName)) {
+            console.log(`Throwing a Pokeball at ${pokemon.name}...`)
+            if ((base_experience * Math.random()) < 30) {
+                state.pokedex[pokemonName] = pokemon;
+                console.log(`${pokemon.name} was caught!`);
+                console.log("you may now inspect it with the inspect command.")
+                return
+            } else {
+                console.log(`${pokemon.name} escaped!`);
+                return
+            } 
+        }
     }
+    console.log(`${pokemon.name} is not here!`)
 }
