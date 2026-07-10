@@ -1,13 +1,15 @@
 import type { State } from "./state.js";
 
 export async function commandInspect(state: State, ...args: string[]) {
+    const location = await state.pokeapi.fetchLocation(state, state.currentLocation as string)
+
     const pokemonName = args[0];
     if (!pokemonName) {
-        console.log("Pokemon does not exist!");
+        console.log("Pokemon field not entered, please use 'inspect <pokemon>'!");
+        return
     } else if (!state.pokedex[pokemonName]) {
         console.log("You have not caught that pokemon");
         return;
-
     } else {
         console.log(`Name: ${state.pokedex[pokemonName].name}`);
         console.log(`Height: ${state.pokedex[pokemonName].height}`);

@@ -3,7 +3,8 @@ import type { State } from "./state.js";
 export async function commandCatch(state: State, ...args: string[]) {
     const pokemonName = args[0];
     if (!pokemonName) {
-        throw new Error("Pokemon does not exist!");
+        console.log("Pokemon does not exist!");
+        return
     }
 
     const pokemon = await state.pokeapi.fetchPokemon(pokemonName);

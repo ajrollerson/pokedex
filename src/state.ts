@@ -2,6 +2,12 @@ import { createInterface, type Interface } from "readline";
 import { getCommands } from "./command.js";
 import { PokeAPI, type Pokemon } from "./pokeapi.js";
 
+export function getRandomInt(min: number, max: number): number {
+  const minCeil = Math.ceil(min);
+  const maxFloor = Math.floor(max);
+  return Math.floor(Math.random() * (maxFloor - minCeil + 1)) + minCeil;
+}
+
 export type State = {
     readline: Interface,
     commands: Record<string, CLICommand>,

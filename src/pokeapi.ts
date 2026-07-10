@@ -87,6 +87,15 @@ type Location = {
   }[]
 };
 
+export type Stat = {
+  base_stat: number;
+  effort: number;
+  stat: {
+    name: string; 
+    url: string;
+  }
+};
+
 export type Pokemon = {
   name: string,
   base_experience: number,

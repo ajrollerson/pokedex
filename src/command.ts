@@ -1,3 +1,4 @@
+import { commandBattle } from "./command_battle.js";
 import { commandCatch } from "./command_catch.js";
 import { commandExit } from "./command_exit.js";
 import { commandExplore } from "./command_explore.js";
@@ -53,6 +54,11 @@ export function getCommands(): Record<string, CLICommand> {
       description: "Explore a specific area",
       callback: commandExplore,
     },
+    battle: {
+      name: "battle",
+      description: "Battle a pokemon using 'battle <target pokemon> <pokedex pokemon>!'",
+      callback: commandBattle,
+    },
     catch: {
       name: "catch",
       description: "Catch a pokemon",
@@ -68,7 +74,6 @@ export function getCommands(): Record<string, CLICommand> {
       description: "List all pokemon in the pokedex",
       callback: commandPokedex,
     },
-    
     
   };
 }

@@ -1,11 +1,14 @@
+import { ShallowLocations } from "./pokeapi.js";
 import type { State } from "./state.js";
 
 export async function commandExplore(state: State, ...args: string[]) {
-    const areaName = args[0];
-    if (!areaName) {
-        throw new Error("Area does not exist!")
-    }
 
+    const areaName = args[0];
+
+    if (!areaName) {
+        console.log("Location field not filled, please explore using 'explore <location>'!")
+        return
+    }
     const location = await state.pokeapi.fetchLocation(state, areaName)
 
     console.log(`Exploring ${areaName}...`)
