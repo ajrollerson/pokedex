@@ -59,7 +59,7 @@ npm run test
 -	Additional validation and error handling 
 -	Architectural refactoring using helper abstractions 
 -	Expanded automated testing 
--	Improved application reliability through bug fixes and additional validation
+-	Improved application reliability through bug fixes
 
 ## Screenshots
 
