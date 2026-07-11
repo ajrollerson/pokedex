@@ -1,7 +1,6 @@
 import type { State } from "./state.js";
 
 export async function commandInspect(state: State, ...args: string[]) {
-    const location = await state.pokeapi.fetchLocation(state, state.currentLocation as string)
 
     const pokemonName = args[0];
     if (!pokemonName) {

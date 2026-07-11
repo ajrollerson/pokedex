@@ -1,8 +1,6 @@
 import { getHeapSpaceStatistics } from "node:v8";
 import { getRandomInt, type State } from "./state.js";
 import type { Stat, Pokemon } from "./pokeapi.js";
-import { InternalEventTargetEventProperties } from "node:events";
-import { addUncaughtExceptionCaptureCallback } from "node:process";
 
 type BattleStats = {
     name: string,
@@ -95,7 +93,7 @@ export async function commandBattle(state: State,  ...args: string[]) {
         return
     } 
     if  (!targetPokemonName || !playerPokemonName) {
-        console.log("Pokemon field missing or incorect! Use 'battle <target pokemon> <pokedex pokemon>'!"); 
+        console.log("Pokemon field missing or incorrect! Use 'battle <target pokemon> <pokedex pokemon>'!"); 
         return 
     }
 
@@ -131,14 +129,14 @@ export async function commandBattle(state: State,  ...args: string[]) {
     while (pPBattleStats.hp > 0 && tPBattleStats.hp > 0) {
         if (tPBattleStats.stunnedSpeed > pPBattleStats.stunnedSpeed) {
             battleRound(tPBattleStats, pPBattleStats)
-            await delay(3000)
+            await delay(2500)
             battleRound(pPBattleStats, tPBattleStats)
-            await delay(3000)
+            await delay(2500)
         } else {
             battleRound(pPBattleStats, tPBattleStats)
-            await delay(3000)
+            await delay(2500)
             battleRound(tPBattleStats, pPBattleStats)
-            await delay(3000)
+            await delay(2500)
         }
 
 
@@ -150,7 +148,7 @@ export async function commandBattle(state: State,  ...args: string[]) {
             console.log("Target weak! Throwing pokeball!")
             state.pokedex[targetPokemonName] = targetPokemon;
             console.log(`${targetPokemonName} was caught!`);
-            console.log("You may now inspect it with the inspect command.")
+            console.log("You may now inspect it with the 'inspect' command.")
             return
         } 
 

@@ -31,7 +31,7 @@ export function getCommands(): Record<string, CLICommand> {
     },
     load: {
       name: "load",
-      description: "Load a save file with 'load <filename>",
+      description: "Load a save file with 'load <filename>'",
       callback: commandLoad,
     },
     where: {
@@ -51,7 +51,7 @@ export function getCommands(): Record<string, CLICommand> {
     },
     explore: {
       name: "explore",
-      description: "Explore a specific area",
+      description: "Explore a specific area using 'explore <location>'",
       callback: commandExplore,
     },
     battle: {
@@ -61,12 +61,12 @@ export function getCommands(): Record<string, CLICommand> {
     },
     catch: {
       name: "catch",
-      description: "Catch a pokemon",
+      description: "Catch a pokemon with 'catch <target pokemon>'",
       callback: commandCatch,
     },
     inspect: {
       name: "inspect",
-      description: "Inspect a captured pokemon",
+      description: "Inspect a captured pokemon with 'inspect <pokedex pokemon>'",
       callback: commandInspect,
     },
     pokedex: {
